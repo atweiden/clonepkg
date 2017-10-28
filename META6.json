@@ -1,0 +1,17 @@
+{
+    "perl"        : "6.*",
+    "name"        : "ArchLinux::AUR::Package::Clone",
+    "version"     : "*",
+    "author"      : "Andy Weidenbaum",
+    "description" : "Clone AUR packages with git",
+    "license"     : "Unlicense",
+    "source-type" : "git",
+    "source-url"  : "git://github.com/atweiden/clonepkg.git",
+    "support"     : {
+        "bugtracker" : "https://github.com/atweiden/clonepkg/issues",
+        "source"     : "https://github.com/atweiden/clonepkg"
+    },
+    "provides" : {
+        "ArchLinux::AUR::Package::Clone" : "lib/ArchLinux/AUR/Package/Clone.pm"
+    }
+}
