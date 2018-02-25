@@ -7,7 +7,7 @@ Clone AUR pkgs with `git`.
 
 ```sh
 $ git clone https://github.com/atweiden/clonepkg && cd clonepkg
-$ ./bin/clonepkg \
+$ ./clonepkg \
     perl6-debugger-ui-commandline \
     perl6-terminal-ansicolor \
     perl6-grammar-debugger
