@@ -1,0 +1,58 @@
+#!/bin/bash
+
+_base_url='https://aur.archlinux.org'
+
+_get_url_function() {
+  local _pkg
+  local _url
+
+  _pkg="$1"
+  _url="${_base_url}/${_pkg}.git"
+
+  echo "$_url"
+}
+
+_run_clonepkg_function() {
+  local _pkg
+  local _url
+
+  _pkg="$(echo "$1" | tr -d '[:space:]')"
+  _url="$(_get_url_function "$_pkg")"
+
+  git clone "$_url"
+}
+
+_clonepkg_function() {
+  for _pkg in "$@"; do
+    _run_clonepkg_function "$_pkg" &
+  done
+  wait
+}
+
+_usage_function() {
+  read -r -d '' _usage_string <<'EOF'
+Usage:
+  clonepkg [-h|--help]
+  clonepkg <pkg> <pkg>...
+
+Options:
+  -h, --help
+    print this help message
+EOF
+  echo "$_usage_string"
+}
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -*)
+      _usage_function
+      exit 0
+      ;;
+    *)
+      _clonepkg_function "$@"
+      exit 0
+      ;;
+  esac
+done
+
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
